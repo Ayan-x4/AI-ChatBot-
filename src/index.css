@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+
+.gradient-glow {
+  background-size: 200% auto;
+  animation: gradientMove 3s linear infinite;
+  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.5));
+}
+
+@keyframes gradientMove {
+  to {
+    background-position: 200% center;
+  }
+}
