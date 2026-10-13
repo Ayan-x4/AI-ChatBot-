@@ -1,20 +1,28 @@
-import React from 'react'
-import Chatwindow from './components/Chatwindow'
-import Navbar from './components/Navbar'
-import Chatinput from './components/Chatinput'
-import MessageContext from './Context/MessageContext'
+import React from "react";
+import Navbar from "./components/Navbar";
+import MessageContext from "./Context/MessageContext";
 
 const App = () => {
   return (
-    <div className=' max-h-screen flex  items-center justify-center'>
-    <div className='w-1/2 mt-15 rounded-2xl overflow-hidden shadow shadow-gray-500 backdrop-blur-sm'>
-        <Navbar />
-        <Chatwindow/>
-         <Chatinput/>
-      </div>
-  <img src="https://wallpapercave.com/wp/wp9276241.jpg" alt="" className=' z-[-1] w-screen fixed' />
-  </div>
-  )
-}
+    <div className="flex h-screen items-center justify-center overflow-hidden bg-black ">
+      <img
+        src="https://wallpapercave.com/wp/wp9276241.jpg
+"
+        alt="Background"
+        className="fixed inset-0 z-[0] h-full w-full object-cover"
+      />
 
-export default App
+      <div className="flex h-[85vh] w-1/2 flex-col overflow-hidden rounded-2xl border border-white/20  shadow-lg shadow-gray-500/30 backdrop-blur-sm">
+        <div className="shrink-0">
+          <Navbar />
+        </div>
+
+        <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+          <MessageContext />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;
