@@ -7,37 +7,58 @@ const Message = ({ message }) => {
   const [error, setError] = useState("");
 
   const handleAskAI = async () => {
-  try {
-    setLoading(true);
-    setError("");
-    setReply("");
+    try {
+      setLoading(true);
+      setError("");
+      setReply("");
 
-    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
-    if (!apiKey) {
-      throw new Error("API key nahi mili. .env file check karo.");
+      if (!apiKey) {
+        throw new Error("API key nahi mili. .env file check karo.");
+      }
+
+      const ai = new GoogleGenAI({ apiKey });
+
+      const response = await ai.models.generateContent({
+        model: "gemini-3.5-flash",
+        contents: message,
+        config: {
+          systemInstruction: `You are Ayan's personal AI assistant.
+
+## About Ayan
+
+My name is Ayan, and I am a Full-Stack AI Developer currently pursuing a B.Tech degree at B.A. College of Engineering and Technology.
+
+I have knowledge of multiple programming languages, including Java, C++, Python, and JavaScript. I also work with various frameworks, libraries, and AI development tools, including React.js, Node.js, and LangChain.
+
+## Your Rules and Instructions
+
+1. Answer questions only using the information provided in this context.
+
+2. If a question is unrelated to Ayan's background, skills, education, or the information provided in this context, do not answer it.
+
+3. Do not make up information or assume facts that are not explicitly mentioned in this context.
+
+4. If a question is outside the scope of this context, respond with exactly the following sentence:
+
+   "Sorry Ayan ne Mujhe is Question pe Train nahi kiya hai.."
+
+5. Keep your answers clear, concise, professional, and easy to understand.
+
+6. Follow these instructions strictly for every user query.
+`,
+        },
+      });
+
+      setReply(response.text || "No response received.");
+    } catch (err) {
+      console.error("Gemini API Error:", err);
+      setError(err.message || "AI response nahi mila.");
+    } finally {
+      setLoading(false);
     }
-
-    const ai = new GoogleGenAI({ apiKey });
-
-    const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
-      contents: message,
-      config: {
-        systemInstruction:
-          `My name is Ayan , and I am a fullstack Ai developer , currently i am parsuing btech from B.a college of engineering and technology,
-          I know multiple programming languages like Java,c++,python,javascript and I aslo know framework or labirary such as Langchai , React.js,Node and so on.. . Answer only this context , other wise say Sorry Ayan ne Mujhe is Question pe Train nahi kiya hai..`
-      },
-    });
-
-    setReply(response.text || "No response received.");
-  } catch (err) {
-    console.error("Gemini API Error:", err);
-    setError(err.message || "AI response nahi mila.");
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   return (
     <div className="p-4 ">
