@@ -74,8 +74,8 @@ The current implementation sends only the selected question to Gemini. Earlier m
 Add your project images to `public/screenshots/`, then uncomment or copy the Markdown examples below. Use descriptive filenames such as `chatbot-interface.png` or `ai-response.png`.
 
 ```md
-![Ayan AI Chatbot interface](./public/screenshots/chatbot-interface.png)
-![Ayan AI Chatbot response](./public/screenshots/ai-response.png)
+![Ayan AI Chatbot interface]<img width="1917" height="1078" alt="Image" src="https://github.com/user-attachments/assets/37045b47-2eba-4bf7-9987-4a3d9fe49db6" />
+![Ayan AI Chatbot response]<img width="1917" height="1078" alt="Image" src="https://github.com/user-attachments/assets/37045b47-2eba-4bf7-9987-4a3d9fe49db6" />
 ```
 
 <!-- Add your screenshots here when they are available. -->
