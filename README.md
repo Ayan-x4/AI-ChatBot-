@@ -1,123 +1,169 @@
-# Ayan AI Chatbot
+# 🤖 Ayan AI Chatbot
 
-A single-page React chatbot that answers questions about Ayan's background, education, programming languages, and development skills. The interface uses Google Gemini to generate responses and presents them in a simple, styled chat experience.
+Ayan AI Chatbot is a single-page React application that answers questions about Ayan's background, education, programming languages, and development skills using Google's Gemini AI.
 
-## Features
+The application provides a simple, interactive chat interface where users can ask questions and receive AI-generated responses.
 
-- Chat-style interface with a full-screen background and styled message panel.
-- Send questions from a multiline text input.
-- Ask Gemini to answer each submitted question individually.
-- Per-message loading state with a `Thinking...` indicator.
-- Inline display of AI responses and API errors.
-- Automatic scrolling to the newest message.
-- Scope-limited assistant prompt that avoids inventing information about Ayan.
+## ✨ Features
 
-## Tech stack
+* 💬 **Interactive Chat Interface** — Ask questions through a clean, user-friendly chat UI.
+* 🤖 **Google Gemini AI** — Generate responses using the Gemini API.
+* 👨‍💻 **Personal AI Assistant** — Answer questions about Ayan's background, education, and technical skills.
+* ⏳ **Loading Indicator** — Display a `Thinking...` indicator while waiting for responses.
+* ⚠️ **Error Handling** — Display API errors directly in the interface.
+* 📜 **Automatic Scrolling** — Automatically scroll to the latest message.
+* 🎨 **Styled Interface** — Full-screen background with a customized chat panel.
+* 📝 **Multiline Input** — Type questions using a multiline text input.
+* 🎯 **Focused Responses** — Use a system instruction to avoid inventing information about Ayan.
 
-- [React](https://react.dev/) 19
-- [Vite](https://vite.dev/) 8
-- [Tailwind CSS](https://tailwindcss.com/) 4
-- [Google GenAI JavaScript SDK](https://www.npmjs.com/package/@google/genai)
-- [Oxlint](https://oxc.rs/docs/guide/usage/linter.html)
+## 📸 Screenshots
 
-## Getting started
+### Chatbot Interface
 
-### Prerequisites
+![Ayan AI Chatbot Interface](https://github.com/user-attachments/assets/37045b47-2eba-4bf7-9987-4a3d9fe49db6)
 
-- Node.js `20.19+` or `22.12+`
-- A Gemini API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
+## 🛠️ Tech Stack
 
-### Installation
+* **React 19** — Frontend UI library
+* **Vite 8** — Development server and build tool
+* **Tailwind CSS 4** — Styling
+* **Google GenAI SDK** — Gemini API integration
+* **Oxlint** — Code linting
 
-1. Clone the repository and move into the project directory.
+## 📋 Prerequisites
 
-   ```bash
-   git clone <your-repository-url>
-   cd <repository-directory>
-   ```
+Before running this project, make sure you have:
 
-2. Install the locked dependencies:
+* [Node.js](https://nodejs.org/) `20.19+` or `22.12+`
+* npm
+* A Gemini API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
+* Git
 
-   ```bash
-   npm ci
-   ```
+## 🚀 Getting Started
 
-3. Create a local environment file named `.env.local` in the project root:
+### 1. Clone the Repository
 
-   ```env
-   VITE_GEMINI_API_KEY=your_gemini_api_key
-   ```
+```bash
+git clone <your-repository-url>
+```
 
-   Do not commit this file or expose your real API key in the repository. The `.env` and `.env.local` files are ignored by Git.
+### 2. Navigate to the Project Directory
 
-### Run locally
+```bash
+cd <repository-directory>
+```
 
-Start the Vite development server:
+### 3. Install Dependencies
+
+```bash
+npm ci
+```
+
+### 4. Configure Environment Variables
+
+Create a `.env.local` file in the project's root directory and add your Gemini API key:
+
+```env
+VITE_GEMINI_API_KEY=your_gemini_api_key
+```
+
+Replace `your_gemini_api_key` with your actual Gemini API key.
+
+**Important:** Never commit your real API key to GitHub.
+
+### 5. Start the Development Server
 
 ```bash
 npm run dev
 ```
 
-Open the local URL printed in the terminal, usually `http://localhost:5173`.
-
-## How to use
-
-1. Type a question about Ayan into the message box.
-2. Click **Send** to add the question to the chat.
-3. Click **Ask AI** on that question to request a Gemini response.
-4. Read the response or any error shown below the question.
-
-The current implementation sends only the selected question to Gemini. Earlier messages remain visible in the interface but are not included as conversation history in the API request.
-
-## Screenshots
-
-Add your project images to `public/screenshots/`, then uncomment or copy the Markdown examples below. Use descriptive filenames such as `chatbot-interface.png` or `ai-response.png`.
-
-```md
-<img width="1917" height="1078" alt="Image" src="https://github.com/user-attachments/assets/37045b47-2eba-4bf7-9987-4a3d9fe49db6" />
-<img width="1917" height="1078" alt="Image" src="https://github.com/user-attachments/assets/37045b47-2eba-4bf7-9987-4a3d9fe49db6" />
-```
-
-<!-- Add your screenshots here when they are available. -->
-
-## Project structure
+Open the local URL displayed in your terminal. By default, Vite usually uses:
 
 ```text
-.
+http://localhost:5173
+```
+
+## 💻 Available Commands
+
+| Command           | Description                          |
+| ----------------- | ------------------------------------ |
+| `npm run dev`     | Start the development server         |
+| `npm run build`   | Build the application for production |
+| `npm run preview` | Preview the production build         |
+| `npm run lint`    | Run Oxlint to check the code         |
+
+## 🗂️ Project Structure
+
+```text
+Ayan-AI-Chatbot/
 ├── public/
 │   ├── favicon.svg
 │   └── icons.svg
 ├── src/
 │   ├── components/
-│   │   ├── Chatinput.jsx       # Message input and send button
-│   │   ├── Message.jsx         # Gemini request, response, and error UI
-│   │   └── Navbar.jsx          # Application header
+│   │   ├── Chatinput.jsx
+│   │   ├── Message.jsx
+│   │   └── Navbar.jsx
 │   ├── Context/
-│   │   └── MessageContext.jsx  # In-memory message list and auto-scroll
-│   ├── App.jsx                 # Main page layout
-│   ├── index.css               # Tailwind import and custom styles
-│   └── main.jsx                # React entry point
-├── .env.local                  # Local API key; do not commit
+│   │   └── MessageContext.jsx
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .env.local
+├── .gitignore
 ├── index.html
 ├── package.json
+├── package-lock.json
 └── vite.config.js
 ```
 
-## Available scripts
+## 💬 How to Use
 
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Start the development server with hot reload. |
-| `npm run build` | Create a production build in `dist/`. |
-| `npm run preview` | Preview the production build locally. |
-| `npm run lint` | Run Oxlint against the project. |
+1. Start the application using `npm run dev`.
+2. Open the application in your browser.
+3. Enter a question about Ayan in the message input.
+4. Click **Send** to add your question to the chat.
+5. Click **Ask AI** on the submitted question to request a response from Gemini.
+6. Wait for the AI to generate its response.
+7. Read the answer displayed below your question.
 
-There is currently no automated test script or test suite in the repository.
+## 🔐 Security Notes
 
-## Important notes
+* The Gemini API key is configured through `.env.local`.
+* Files containing environment variables should be excluded from Git using `.gitignore`.
+* Variables prefixed with `VITE_` are exposed to browser-side code. Therefore, the API key in this implementation can be accessed by users through browser tools.
+* For production use, move Gemini API requests to a backend server and keep the API key on the server.
+* Never upload API keys or other secrets to a public repository.
 
-- The Gemini request is made directly from the browser. Because Vite exposes variables prefixed with `VITE_` to client-side code, the API key should be treated as public in this version. For production, move the Gemini request behind a server-side API route or backend proxy.
-- Chat messages are stored only in React state, so they are cleared when the page is refreshed.
-- The assistant uses a hard-coded Gemini model and system instruction in `src/components/Message.jsx`.
-- The visual background is loaded from an external wallpaper URL, so it requires network access.
-- There is no client-side routing; the application is served from the root page.
+## ⚠️ Current Limitations
+
+* Chat messages are stored in React state and are cleared when the page is refreshed.
+* Previous messages remain visible but are not included in the Gemini API request.
+* The application requires an internet connection to communicate with Gemini and load the external background image.
+* AI responses depend on the availability and limits of the Gemini API.
+* Automated tests are not currently configured.
+
+## 🔮 Future Improvements
+
+* [ ] Maintain conversation history in Gemini requests.
+* [ ] Add chat history and persistent message storage.
+* [ ] Improve mobile responsiveness.
+* [ ] Add a backend API to protect the Gemini API key.
+* [ ] Add a typing animation for AI responses.
+* [ ] Support Markdown formatting in AI responses.
+* [ ] Add a clear-chat option.
+* [ ] Improve error handling and API quota feedback.
+
+## 👨‍💻 Author
+
+**Md Ayan**
+
+Aspiring AI Full Stack Developer interested in web development and AI-powered applications.
+
+### Connect With Me
+
+* GitHub: [Ayan-x4](https://github.com/Ayan-x4)
+
+---
+
+⭐ If you find this project interesting, consider giving the repository a star!
